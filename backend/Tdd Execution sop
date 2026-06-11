@@ -1,0 +1,131 @@
+# TDD Test Environment & Execution Strategy
+
+## 1. Test Environment Setup Configuration
+
+The Spring Boot test environment has been configured in the `backend` directory.
+
+### Maven Dependencies (`pom.xml`)
+The `pom.xml` has been configured with the necessary dependencies for a Spring Boot Web project with testing capabilities:
+- `spring-boot-starter-web`: Core web capabilities.
+- `spring-boot-starter-validation`: Jakarta Bean Validation.
+- `spring-boot-starter-test`: Includes JUnit 5, Mockito, and Spring MockMvc.
+- `h2`: In-memory database scoped for testing.
+
+### Test Configuration (`application-test.yml`)
+The test profile configuration (`src/test/resources/application-test.yml`) is set up to use an in-memory H2 database to ensure tests run quickly and independently:
+```yaml
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+```
+
+## 2. Execution Commands
+
+Use the Maven Wrapper (`./mvnw`) or a local Maven installation (`mvn`) from the `/backend` directory. Ensure that you have Java 21 and Maven installed.
+
+### Run All 27 Modules Together
+```bash
+mvn clean test -Dspring.profiles.active=test
+```
+
+### Run a Single Module
+You can use Maven's `-Dtest` parameter with wildcards matching the module packages:
+```bash
+# Example: Run only MOD-01 (Authentication) tests
+mvn clean test -Dtest="*mod01_authentication.*" -Dspring.profiles.active=test
+
+# Example: Run only MOD-07 (Bulk Upload) tests
+mvn clean test -Dtest="*mod07_bulk_upload.*" -Dspring.profiles.active=test
+```
+
+### Run a Single Feature Test Class
+```bash
+mvn clean test -Dtest="OtpLoginControllerTest" -Dspring.profiles.active=test
+```
+
+## 3. Standard Operating Procedure (SOP) for TDD Cycle
+
+Follow this strict Red-Green-Refactor cycle for each feature implementation:
+
+### Phase 1: RED (Failing Contract)
+1. **Compile Safe Stubs:** Create empty Controller, Service interface, and DTO records in `src/main/java` so that the test classes compile. 
+2. **Execute Test:** Run the test class (e.g., `mvn test -Dtest=OtpLoginControllerTest`).
+3. **Verify Failure:** Ensure the tests run but fail on assertions (e.g., expecting 201 Created but getting 404 or 400).
+4. **Log State:** Ensure `test-cases-log.md` reflects `❌ FAIL`.
+
+### Phase 2: GREEN (Implementation)
+1. **Implement Logic:** Add the minimal required business logic to the Controller and Service.
+2. **Execute Test:** Run the test again.
+3. **Verify Success:** Ensure the tests pass successfully.
+
+### Phase 3: REFACTOR
+1. **Optimize:** Clean up code, enforce Clean Architecture patterns, extract constants, and apply formatting.
+2. **Execute Test:** Run the test again to ensure no regressions.
+3. **Log State:** Update `test-cases-log.md` to `✅ PASS`.
+
+## 4. Test Cases Log Update Template
+
+After completing the TDD cycle for a feature, update `doc/test-cases-log.md`.
+
+**Change Status from:**
+```markdown
+| TC-01-01-01 | OTP Login | Valid email — OTP dispatched | Integration | High | ❌ FAIL | Pending impl |
+```
+**To:**
+```markdown
+| TC-01-01-01 | OTP Login | Valid email — OTP dispatched | Integration | High | ✅ PASS | Implemented in PR #12 |
+```
+
+Also, update the **Summary Dashboard** counts at the top of the file to reflect the newly passing tests.
+
+## 5. Recommended Execution Strategy (Order of Implementation)
+
+To minimize mocking complexity and handle dependencies effectively, implement the 27 modules in the following layered order:
+
+### Layer 1: Core Foundation & Identities (Zero Dependencies)
+These modules form the base identity and configuration layers.
+1. **MOD-27** Configuration Management
+2. **MOD-01** Authentication (JWT, OTP logic)
+3. **MOD-02** User Profile (Candidate schemas)
+4. **MOD-03** Department Management
+5. **MOD-04** Technology Management
+6. **MOD-05** Experience Level Management
+
+### Layer 2: Content & Resources (Depends on Layer 1)
+These modules handle Q&A and taxonomy.
+7. **MOD-08** Categorization Engine
+8. **MOD-06** Question Repository
+9. **MOD-24** File Storage (S3 Mock configs)
+10. **MOD-07** Bulk Upload (Ingestion triggers)
+11. **MOD-26** AI Prompt Management
+
+### Layer 3: Interview Execution (Depends on Layer 2)
+These handle the real-time interviewing pipeline.
+12. **MOD-09** Interview Configuration
+13. **MOD-10** Interview Session
+14. **MOD-11** Question Delivery
+15. **MOD-12** Voice Recording
+16. **MOD-13** Speech-To-Text (Whisper mocks)
+
+### Layer 4: AI & Evaluation (Depends on Layer 3)
+Async processing and grading.
+17. **MOD-14** AI Evaluation
+18. **MOD-15** Scoring Engine
+19. **MOD-16** Feedback Engine
+20. **MOD-19** Recommendation Engine
+
+### Layer 5: Admin, Analytics & Cross-Cutting (Depends on Everything)
+21. **MOD-17** Reporting
+22. **MOD-18** Dashboard
+23. **MOD-20** Analytics
+24. **MOD-21** Notifications
+25. **MOD-22** Audit Logs
+26. **MOD-23** Admin Portal
+27. **MOD-25** Search & Filtering

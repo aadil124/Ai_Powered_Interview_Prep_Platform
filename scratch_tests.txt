@@ -1,0 +1,1516 @@
+/backend/src/test/java/com/interview/platform/mod01_authentication/OtpLoginControllerTest.java
+// File: src/test/java/com/interview/platform/mod01_authentication/OtpLoginControllerTest.java
+
+package com.interview.platform.mod01_authentication;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(OtpLoginController.class)
+class OtpLoginControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private OtpLoginService service;
+
+    @Test
+    @DisplayName("TC-01-01-01: Valid email — OTP dispatched")
+    void whenValidEmailOtpDispatched_TC010101() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/otp/request")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-01-01-02: Valid phone — OTP dispatched")
+    void whenValidPhoneOtpDispatched_TC010102() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/otp/request")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-01-01-03: Invalid email format")
+    void whenInvalidEmailFormat_TC010103() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/otp/request")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("TC-01-01-04: 6th request within 10 minutes")
+    void when6thRequestWithin10Minutes_TC010104() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/otp/request")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isTooManyRequests());
+    }
+
+    @Test
+    @DisplayName("TC-01-01-05: Valid OTP within TTL")
+    void whenValidOtpWithinTtl_TC010105() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/otp/verify")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-01-01-06: Expired OTP")
+    void whenExpiredOtp_TC010106() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/otp/verify")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    @DisplayName("TC-01-01-07: Already used OTP (replay)")
+    void whenAlreadyUsedOtpReplay_TC010107() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/otp/verify")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    @DisplayName("TC-01-01-08: Wrong OTP")
+    void whenWrongOtp_TC010108() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/otp/verify")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isUnauthorized());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod01_authentication/JwtTokenManagementControllerTest.java
+// File: src/test/java/com/interview/platform/mod01_authentication/JwtTokenManagementControllerTest.java
+
+package com.interview.platform.mod01_authentication;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(JwtTokenManagementController.class)
+class JwtTokenManagementControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private JwtTokenManagementService service;
+
+    @Test
+    @DisplayName("TC-01-02-01: Valid refresh token")
+    void whenValidRefreshToken_TC010201() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/token/refresh")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-01-02-02: Expired refresh token")
+    void whenExpiredRefreshToken_TC010202() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/token/refresh")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    @DisplayName("TC-01-02-03: Reuse of rotated (old) token")
+    void whenReuseOfRotatedOldToken_TC010203() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/token/refresh")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    @DisplayName("TC-01-02-04: Malformed JWT string")
+    void whenMalformedJwtString_TC010204() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/token/refresh")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("TC-01-02-05: Valid JWT + refresh token")
+    void whenValidJwtRefreshToken_TC010205() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/logout")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-01-02-06: Missing Authorization header")
+    void whenMissingAuthorizationHeader_TC010206() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/logout")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    @DisplayName("TC-01-02-07: Token reuse after logout")
+    void whenTokenReuseAfterLogout_TC010207() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/auth/logout")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isUnauthorized());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod02_user_profile/CandidateProfileManagementControllerTest.java
+// File: src/test/java/com/interview/platform/mod02_user_profile/CandidateProfileManagementControllerTest.java
+
+package com.interview.platform.mod02_user_profile;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(CandidateProfileManagementController.class)
+class CandidateProfileManagementControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private CandidateProfileManagementService service;
+
+    @Test
+    @DisplayName("TC-02-01-01: Valid JWT — own profile")
+    void whenValidJwtOwnProfile_TC020101() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/candidates/profile"))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-02-01-02: No JWT")
+    void whenNoJwt_TC020102() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/candidates/profile"))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    @DisplayName("TC-02-01-03: Valid JWT but profile deleted")
+    void whenValidJwtButProfileDeleted_TC020103() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/candidates/profile"))
+            .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DisplayName("TC-02-01-04: Update name only")
+    void whenUpdateNameOnly_TC020104() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(put("/api/v1/candidates/profile")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-02-01-05: Duplicate email")
+    void whenDuplicateEmail_TC020105() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(put("/api/v1/candidates/profile")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isConflict());
+    }
+
+    @Test
+    @DisplayName("TC-02-01-06: Invalid phone format")
+    void whenInvalidPhoneFormat_TC020106() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(put("/api/v1/candidates/profile")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("TC-02-01-07: Empty body")
+    void whenEmptyBody_TC020107() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(put("/api/v1/candidates/profile")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("TC-02-01-08: Valid delete")
+    void whenValidDelete_TC020108() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(delete("/api/v1/candidates/profile"))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-02-01-09: Sessions, answers, audio removed")
+    void whenSessionsAnswersAudioRemoved_TC020109() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(delete("/api/v1/candidates/profile"))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-02-01-10: No JWT")
+    void whenNoJwt_TC020110() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(delete("/api/v1/candidates/profile"))
+            .andExpect(status().isUnauthorized());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod03_department_management/DepartmentManagementControllerTest.java
+// File: src/test/java/com/interview/platform/mod03_department_management/DepartmentManagementControllerTest.java
+
+package com.interview.platform.mod03_department_management;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(DepartmentManagementController.class)
+class DepartmentManagementControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private DepartmentManagementService service;
+
+    @Test
+    @DisplayName("TC-03-01-01: Valid creation")
+    void whenValidCreation_TC030101() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/admin/departments")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isCreated());
+    }
+
+    @Test
+    @DisplayName("TC-03-01-02: Duplicate name")
+    void whenDuplicateName_TC030102() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/admin/departments")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isConflict());
+    }
+
+    @Test
+    @DisplayName("TC-03-01-03: Missing name field")
+    void whenMissingNameField_TC030103() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/admin/departments")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("TC-03-01-04: CANDIDATE role attempt")
+    void whenCandidateRoleAttempt_TC030104() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/admin/departments")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isForbidden());
+    }
+
+    @Test
+    @DisplayName("TC-03-01-05: List departments — results exist")
+    void whenListDepartmentsResultsExist_TC030105() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/admin/departments"))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-03-01-06: No departments yet")
+    void whenNoDepartmentsYet_TC030106() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/admin/departments"))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-03-01-07: CANDIDATE role")
+    void whenCandidateRole_TC030107() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/admin/departments"))
+            .andExpect(status().isForbidden());
+    }
+
+    @Test
+    @DisplayName("TC-03-01-08: Valid update")
+    void whenValidUpdate_TC030108() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(put("/api/v1/admin/departments/{id}")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-03-01-09: Department not found")
+    void whenDepartmentNotFound_TC030109() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(put("/api/v1/admin/departments/{id}")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DisplayName("TC-03-01-10: Duplicate name")
+    void whenDuplicateName_TC030110() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(put("/api/v1/admin/departments/{id}")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isConflict());
+    }
+
+    @Test
+    @DisplayName("TC-03-01-11: SUPER_ADMIN deletes existing dept")
+    void whenSuperadminDeletesExistingDept_TC030111() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(delete("/api/v1/admin/departments/{id}"))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-03-01-12: CONTENT_ADMIN attempts delete")
+    void whenContentadminAttemptsDelete_TC030112() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(delete("/api/v1/admin/departments/{id}"))
+            .andExpect(status().isForbidden());
+    }
+
+    @Test
+    @DisplayName("TC-03-01-13: Department not found")
+    void whenDepartmentNotFound_TC030113() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(delete("/api/v1/admin/departments/{id}"))
+            .andExpect(status().isNotFound());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod04_technology_management/TechnologyManagementControllerTest.java
+// File: src/test/java/com/interview/platform/mod04_technology_management/TechnologyManagementControllerTest.java
+
+package com.interview.platform.mod04_technology_management;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(TechnologyManagementController.class)
+class TechnologyManagementControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private TechnologyManagementService service;
+
+    @Test
+    @DisplayName("TC-MOD04-001: Default GET test")
+    void whenDefaultGetTest_TCMOD04001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod05_experience_level_management/ExperienceLevelManagementControllerTest.java
+// File: src/test/java/com/interview/platform/mod05_experience_level_management/ExperienceLevelManagementControllerTest.java
+
+package com.interview.platform.mod05_experience_level_management;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(ExperienceLevelManagementController.class)
+class ExperienceLevelManagementControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private ExperienceLevelManagementService service;
+
+    @Test
+    @DisplayName("TC-MOD05-001: Default GET test")
+    void whenDefaultGetTest_TCMOD05001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod06_question_repository/QuestionCrudSearchControllerTest.java
+// File: src/test/java/com/interview/platform/mod06_question_repository/QuestionCrudSearchControllerTest.java
+
+package com.interview.platform.mod06_question_repository;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(QuestionCrudSearchController.class)
+class QuestionCrudSearchControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private QuestionCrudSearchService service;
+
+    @Test
+    @DisplayName("TC-06-01-01: Valid question creation")
+    void whenValidQuestionCreation_TC060101() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/admin/questions")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isCreated());
+    }
+
+    @Test
+    @DisplayName("TC-06-01-02: Missing questionText")
+    void whenMissingQuestiontext_TC060102() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/admin/questions")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("TC-06-01-03: Invalid departmentId")
+    void whenInvalidDepartmentid_TC060103() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/admin/questions")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isNotFound());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod07_bulk_upload/DocumentUploadPipelineControllerTest.java
+// File: src/test/java/com/interview/platform/mod07_bulk_upload/DocumentUploadPipelineControllerTest.java
+
+package com.interview.platform.mod07_bulk_upload;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(DocumentUploadPipelineController.class)
+class DocumentUploadPipelineControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private DocumentUploadPipelineService service;
+
+    @Test
+    @DisplayName("TC-07-01-01: Valid DOCX ingest trigger")
+    void whenValidDocxIngestTrigger_TC070101() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/admin/questions/ingest")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isAccepted());
+    }
+
+    @Test
+    @DisplayName("TC-07-01-02: File > 50MB")
+    void whenFile50mb_TC070102() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/admin/questions/ingest")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isPayloadTooLarge());
+    }
+
+    @Test
+    @DisplayName("TC-07-01-03: Unsupported file type (CSV)")
+    void whenUnsupportedFileTypeCsv_TC070103() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/admin/questions/ingest")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("TC-07-01-04: Invalid departmentId")
+    void whenInvalidDepartmentid_TC070104() throws Exception {
+        String requestBody = "{}";
+
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(post("/api/v1/admin/questions/ingest")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+            .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DisplayName("TC-07-01-05: Poll PROCESSING task")
+    void whenPollProcessingTask_TC070105() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/admin/questions/ingest/{taskId}"))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-07-01-06: Poll COMPLETED task")
+    void whenPollCompletedTask_TC070106() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/admin/questions/ingest/{taskId}"))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("TC-07-01-07: Invalid taskId")
+    void whenInvalidTaskid_TC070107() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/admin/questions/ingest/{taskId}"))
+            .andExpect(status().isNotFound());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod08_categorization_engine/CategorizationEngineControllerTest.java
+// File: src/test/java/com/interview/platform/mod08_categorization_engine/CategorizationEngineControllerTest.java
+
+package com.interview.platform.mod08_categorization_engine;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(CategorizationEngineController.class)
+class CategorizationEngineControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private CategorizationEngineService service;
+
+    @Test
+    @DisplayName("TC-MOD08-001: Default GET test")
+    void whenDefaultGetTest_TCMOD08001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod09_interview_configuration/InterviewConfigurationControllerTest.java
+// File: src/test/java/com/interview/platform/mod09_interview_configuration/InterviewConfigurationControllerTest.java
+
+package com.interview.platform.mod09_interview_configuration;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(InterviewConfigurationController.class)
+class InterviewConfigurationControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private InterviewConfigurationService service;
+
+    @Test
+    @DisplayName("TC-MOD09-001: Default GET test")
+    void whenDefaultGetTest_TCMOD09001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod10_interview_session/InterviewSessionControllerTest.java
+// File: src/test/java/com/interview/platform/mod10_interview_session/InterviewSessionControllerTest.java
+
+package com.interview.platform.mod10_interview_session;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(InterviewSessionController.class)
+class InterviewSessionControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private InterviewSessionService service;
+
+    @Test
+    @DisplayName("TC-MOD10-001: Default GET test")
+    void whenDefaultGetTest_TCMOD10001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod11_question_delivery/QuestionDeliveryControllerTest.java
+// File: src/test/java/com/interview/platform/mod11_question_delivery/QuestionDeliveryControllerTest.java
+
+package com.interview.platform.mod11_question_delivery;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(QuestionDeliveryController.class)
+class QuestionDeliveryControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private QuestionDeliveryService service;
+
+    @Test
+    @DisplayName("TC-MOD11-001: Default GET test")
+    void whenDefaultGetTest_TCMOD11001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod12_voice_recording/VoiceRecordingControllerTest.java
+// File: src/test/java/com/interview/platform/mod12_voice_recording/VoiceRecordingControllerTest.java
+
+package com.interview.platform.mod12_voice_recording;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(VoiceRecordingController.class)
+class VoiceRecordingControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private VoiceRecordingService service;
+
+    @Test
+    @DisplayName("TC-MOD12-001: Default GET test")
+    void whenDefaultGetTest_TCMOD12001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod13_speech_to_text/SpeechToTextControllerTest.java
+// File: src/test/java/com/interview/platform/mod13_speech_to_text/SpeechToTextControllerTest.java
+
+package com.interview.platform.mod13_speech_to_text;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(SpeechToTextController.class)
+class SpeechToTextControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private SpeechToTextService service;
+
+    @Test
+    @DisplayName("TC-MOD13-001: Default GET test")
+    void whenDefaultGetTest_TCMOD13001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod14_ai_evaluation/AiEvaluationControllerTest.java
+// File: src/test/java/com/interview/platform/mod14_ai_evaluation/AiEvaluationControllerTest.java
+
+package com.interview.platform.mod14_ai_evaluation;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(AiEvaluationController.class)
+class AiEvaluationControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private AiEvaluationService service;
+
+    @Test
+    @DisplayName("TC-MOD14-001: Default GET test")
+    void whenDefaultGetTest_TCMOD14001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod15_scoring_engine/ScoringEngineControllerTest.java
+// File: src/test/java/com/interview/platform/mod15_scoring_engine/ScoringEngineControllerTest.java
+
+package com.interview.platform.mod15_scoring_engine;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(ScoringEngineController.class)
+class ScoringEngineControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private ScoringEngineService service;
+
+    @Test
+    @DisplayName("TC-MOD15-001: Default GET test")
+    void whenDefaultGetTest_TCMOD15001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod16_feedback_engine/FeedbackEngineControllerTest.java
+// File: src/test/java/com/interview/platform/mod16_feedback_engine/FeedbackEngineControllerTest.java
+
+package com.interview.platform.mod16_feedback_engine;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(FeedbackEngineController.class)
+class FeedbackEngineControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private FeedbackEngineService service;
+
+    @Test
+    @DisplayName("TC-MOD16-001: Default GET test")
+    void whenDefaultGetTest_TCMOD16001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod17_reporting/ReportingControllerTest.java
+// File: src/test/java/com/interview/platform/mod17_reporting/ReportingControllerTest.java
+
+package com.interview.platform.mod17_reporting;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(ReportingController.class)
+class ReportingControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private ReportingService service;
+
+    @Test
+    @DisplayName("TC-MOD17-001: Default GET test")
+    void whenDefaultGetTest_TCMOD17001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod18_dashboard/DashboardControllerTest.java
+// File: src/test/java/com/interview/platform/mod18_dashboard/DashboardControllerTest.java
+
+package com.interview.platform.mod18_dashboard;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(DashboardController.class)
+class DashboardControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private DashboardService service;
+
+    @Test
+    @DisplayName("TC-MOD18-001: Default GET test")
+    void whenDefaultGetTest_TCMOD18001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod19_recommendation_engine/RecommendationEngineControllerTest.java
+// File: src/test/java/com/interview/platform/mod19_recommendation_engine/RecommendationEngineControllerTest.java
+
+package com.interview.platform.mod19_recommendation_engine;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(RecommendationEngineController.class)
+class RecommendationEngineControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private RecommendationEngineService service;
+
+    @Test
+    @DisplayName("TC-MOD19-001: Default GET test")
+    void whenDefaultGetTest_TCMOD19001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod20_analytics/AnalyticsControllerTest.java
+// File: src/test/java/com/interview/platform/mod20_analytics/AnalyticsControllerTest.java
+
+package com.interview.platform.mod20_analytics;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(AnalyticsController.class)
+class AnalyticsControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private AnalyticsService service;
+
+    @Test
+    @DisplayName("TC-MOD20-001: Default GET test")
+    void whenDefaultGetTest_TCMOD20001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod21_notifications/NotificationsControllerTest.java
+// File: src/test/java/com/interview/platform/mod21_notifications/NotificationsControllerTest.java
+
+package com.interview.platform.mod21_notifications;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(NotificationsController.class)
+class NotificationsControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private NotificationsService service;
+
+    @Test
+    @DisplayName("TC-MOD21-001: Default GET test")
+    void whenDefaultGetTest_TCMOD21001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod22_audit_logs/AuditLogsControllerTest.java
+// File: src/test/java/com/interview/platform/mod22_audit_logs/AuditLogsControllerTest.java
+
+package com.interview.platform.mod22_audit_logs;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(AuditLogsController.class)
+class AuditLogsControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private AuditLogsService service;
+
+    @Test
+    @DisplayName("TC-MOD22-001: Default GET test")
+    void whenDefaultGetTest_TCMOD22001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod23_admin_portal/AdminPortalControllerTest.java
+// File: src/test/java/com/interview/platform/mod23_admin_portal/AdminPortalControllerTest.java
+
+package com.interview.platform.mod23_admin_portal;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(AdminPortalController.class)
+class AdminPortalControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private AdminPortalService service;
+
+    @Test
+    @DisplayName("TC-MOD23-001: Default GET test")
+    void whenDefaultGetTest_TCMOD23001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod24_file_storage/FileStorageControllerTest.java
+// File: src/test/java/com/interview/platform/mod24_file_storage/FileStorageControllerTest.java
+
+package com.interview.platform.mod24_file_storage;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(FileStorageController.class)
+class FileStorageControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private FileStorageService service;
+
+    @Test
+    @DisplayName("TC-MOD24-001: Default GET test")
+    void whenDefaultGetTest_TCMOD24001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod25_search_filtering/SearchFilteringControllerTest.java
+// File: src/test/java/com/interview/platform/mod25_search_filtering/SearchFilteringControllerTest.java
+
+package com.interview.platform.mod25_search_filtering;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(SearchFilteringController.class)
+class SearchFilteringControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private SearchFilteringService service;
+
+    @Test
+    @DisplayName("TC-MOD25-001: Default GET test")
+    void whenDefaultGetTest_TCMOD25001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod26_ai_prompt_management/AiPromptManagementControllerTest.java
+// File: src/test/java/com/interview/platform/mod26_ai_prompt_management/AiPromptManagementControllerTest.java
+
+package com.interview.platform.mod26_ai_prompt_management;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(AiPromptManagementController.class)
+class AiPromptManagementControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private AiPromptManagementService service;
+
+    @Test
+    @DisplayName("TC-MOD26-001: Default GET test")
+    void whenDefaultGetTest_TCMOD26001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}
+
+
+/backend/src/test/java/com/interview/platform/mod27_configuration_management/ConfigurationManagementControllerTest.java
+// File: src/test/java/com/interview/platform/mod27_configuration_management/ConfigurationManagementControllerTest.java
+
+package com.interview.platform.mod27_configuration_management;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+
+@WebMvcTest(ConfigurationManagementController.class)
+class ConfigurationManagementControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private ConfigurationManagementService service;
+
+    @Test
+    @DisplayName("TC-MOD27-001: Default GET test")
+    void whenDefaultGetTest_TCMOD27001() throws Exception {
+        // NOTE: No mock setup — service is unimplemented; this test will FAIL until implementation
+        
+        mockMvc.perform(get("/api/v1/placeholder"))
+            .andExpect(status().isOk());
+    }
+}

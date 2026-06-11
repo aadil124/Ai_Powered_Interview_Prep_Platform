@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.interview.platform.mod03_department_management.DepartmentManagementControllerTest
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s -- in com.interview.platform.mod03_department_management.DepartmentManagementControllerTest

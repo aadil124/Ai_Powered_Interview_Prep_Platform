@@ -1,0 +1,560 @@
+// File: src/main/java/com/interview/platform/mod14_ai_evaluation/AiEvaluationController.java
+package com.interview.platform.mod14_ai_evaluation;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/ai-evaluation")
+public class AiEvaluationController {
+}
+
+// File: src/main/java/com/interview/platform/mod14_ai_evaluation/AiEvaluationService.java
+package com.interview.platform.mod14_ai_evaluation;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class AiEvaluationService {
+}
+
+// File: src/main/java/com/interview/platform/mod17_reporting/ReportingController.java
+package com.interview.platform.mod17_reporting;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/reporting")
+public class ReportingController {
+}
+
+// File: src/main/java/com/interview/platform/mod17_reporting/ReportingService.java
+package com.interview.platform.mod17_reporting;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class ReportingService {
+}
+
+// File: src/main/java/com/interview/platform/mod18_dashboard/DashboardController.java
+package com.interview.platform.mod18_dashboard;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/dashboard")
+public class DashboardController {
+}
+
+// File: src/main/java/com/interview/platform/mod18_dashboard/DashboardService.java
+package com.interview.platform.mod18_dashboard;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class DashboardService {
+}
+
+// File: src/main/java/com/interview/platform/mod16_feedback_engine/FeedbackEngineController.java
+package com.interview.platform.mod16_feedback_engine;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/feedback-engine")
+public class FeedbackEngineController {
+}
+
+// File: src/main/java/com/interview/platform/mod16_feedback_engine/FeedbackEngineService.java
+package com.interview.platform.mod16_feedback_engine;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class FeedbackEngineService {
+}
+
+// File: src/main/java/com/interview/platform/mod12_voice_recording/VoiceRecordingController.java
+package com.interview.platform.mod12_voice_recording;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/voice-recording")
+public class VoiceRecordingController {
+}
+
+// File: src/main/java/com/interview/platform/mod12_voice_recording/VoiceRecordingService.java
+package com.interview.platform.mod12_voice_recording;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class VoiceRecordingService {
+}
+
+// File: src/main/java/com/interview/platform/mod03_department_management/DepartmentManagementController.java
+package com.interview.platform.mod03_department_management;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/department-management")
+public class DepartmentManagementController {
+}
+
+// File: src/main/java/com/interview/platform/mod03_department_management/DepartmentManagementService.java
+package com.interview.platform.mod03_department_management;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class DepartmentManagementService {
+}
+
+// File: src/main/java/com/interview/platform/mod23_admin_portal/AdminPortalController.java
+package com.interview.platform.mod23_admin_portal;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/admin-portal")
+public class AdminPortalController {
+}
+
+// File: src/main/java/com/interview/platform/mod23_admin_portal/AdminPortalService.java
+package com.interview.platform.mod23_admin_portal;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class AdminPortalService {
+}
+
+// File: src/main/java/com/interview/platform/mod19_recommendation_engine/RecommendationEngineController.java
+package com.interview.platform.mod19_recommendation_engine;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/recommendation-engine")
+public class RecommendationEngineController {
+}
+
+// File: src/main/java/com/interview/platform/mod19_recommendation_engine/RecommendationEngineService.java
+package com.interview.platform.mod19_recommendation_engine;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class RecommendationEngineService {
+}
+
+// File: src/main/java/com/interview/platform/mod07_bulk_upload/DocumentUploadPipelineController.java
+package com.interview.platform.mod07_bulk_upload;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/bulk-upload")
+public class DocumentUploadPipelineController {
+}
+
+// File: src/main/java/com/interview/platform/mod07_bulk_upload/DocumentUploadPipelineService.java
+package com.interview.platform.mod07_bulk_upload;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class DocumentUploadPipelineService {
+}
+
+// File: src/main/java/com/interview/platform/mod08_categorization_engine/CategorizationEngineController.java
+package com.interview.platform.mod08_categorization_engine;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/categorization-engine")
+public class CategorizationEngineController {
+}
+
+// File: src/main/java/com/interview/platform/mod08_categorization_engine/CategorizationEngineService.java
+package com.interview.platform.mod08_categorization_engine;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class CategorizationEngineService {
+}
+
+// File: src/main/java/com/interview/platform/mod25_search_filtering/SearchFilteringController.java
+package com.interview.platform.mod25_search_filtering;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/search-filtering")
+public class SearchFilteringController {
+}
+
+// File: src/main/java/com/interview/platform/mod25_search_filtering/SearchFilteringService.java
+package com.interview.platform.mod25_search_filtering;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class SearchFilteringService {
+}
+
+// File: src/main/java/com/interview/platform/mod13_speech_to_text/SpeechToTextController.java
+package com.interview.platform.mod13_speech_to_text;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/speech-to-text")
+public class SpeechToTextController {
+}
+
+// File: src/main/java/com/interview/platform/mod13_speech_to_text/SpeechToTextService.java
+package com.interview.platform.mod13_speech_to_text;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class SpeechToTextService {
+}
+
+// File: src/main/java/com/interview/platform/mod20_analytics/AnalyticsController.java
+package com.interview.platform.mod20_analytics;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/analytics")
+public class AnalyticsController {
+}
+
+// File: src/main/java/com/interview/platform/mod20_analytics/AnalyticsService.java
+package com.interview.platform.mod20_analytics;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class AnalyticsService {
+}
+
+// File: src/main/java/com/interview/platform/mod09_interview_configuration/InterviewConfigurationController.java
+package com.interview.platform.mod09_interview_configuration;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/interview-configuration")
+public class InterviewConfigurationController {
+}
+
+// File: src/main/java/com/interview/platform/mod09_interview_configuration/InterviewConfigurationService.java
+package com.interview.platform.mod09_interview_configuration;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class InterviewConfigurationService {
+}
+
+// File: src/main/java/com/interview/platform/mod26_ai_prompt_management/AiPromptManagementController.java
+package com.interview.platform.mod26_ai_prompt_management;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/ai-prompt-management")
+public class AiPromptManagementController {
+}
+
+// File: src/main/java/com/interview/platform/mod26_ai_prompt_management/AiPromptManagementService.java
+package com.interview.platform.mod26_ai_prompt_management;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class AiPromptManagementService {
+}
+
+// File: src/main/java/com/interview/platform/mod01_authentication/OtpLoginController.java
+package com.interview.platform.mod01_authentication;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/authentication")
+public class OtpLoginController {
+}
+
+// File: src/main/java/com/interview/platform/mod01_authentication/OtpLoginService.java
+package com.interview.platform.mod01_authentication;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class OtpLoginService {
+}
+
+// File: src/main/java/com/interview/platform/mod01_authentication/JwtTokenManagementController.java
+package com.interview.platform.mod01_authentication;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/authentication")
+public class JwtTokenManagementController {
+}
+
+// File: src/main/java/com/interview/platform/mod01_authentication/JwtTokenManagementService.java
+package com.interview.platform.mod01_authentication;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class JwtTokenManagementService {
+}
+
+// File: src/main/java/com/interview/platform/mod10_interview_session/InterviewSessionController.java
+package com.interview.platform.mod10_interview_session;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/interview-session")
+public class InterviewSessionController {
+}
+
+// File: src/main/java/com/interview/platform/mod10_interview_session/InterviewSessionService.java
+package com.interview.platform.mod10_interview_session;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class InterviewSessionService {
+}
+
+// File: src/main/java/com/interview/platform/mod11_question_delivery/QuestionDeliveryController.java
+package com.interview.platform.mod11_question_delivery;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/question-delivery")
+public class QuestionDeliveryController {
+}
+
+// File: src/main/java/com/interview/platform/mod11_question_delivery/QuestionDeliveryService.java
+package com.interview.platform.mod11_question_delivery;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class QuestionDeliveryService {
+}
+
+// File: src/main/java/com/interview/platform/mod04_technology_management/TechnologyManagementController.java
+package com.interview.platform.mod04_technology_management;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/technology-management")
+public class TechnologyManagementController {
+}
+
+// File: src/main/java/com/interview/platform/mod04_technology_management/TechnologyManagementService.java
+package com.interview.platform.mod04_technology_management;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class TechnologyManagementService {
+}
+
+// File: src/main/java/com/interview/platform/mod22_audit_logs/AuditLogsController.java
+package com.interview.platform.mod22_audit_logs;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/audit-logs")
+public class AuditLogsController {
+}
+
+// File: src/main/java/com/interview/platform/mod22_audit_logs/AuditLogsService.java
+package com.interview.platform.mod22_audit_logs;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class AuditLogsService {
+}
+
+// File: src/main/java/com/interview/platform/mod24_file_storage/FileStorageController.java
+package com.interview.platform.mod24_file_storage;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/file-storage")
+public class FileStorageController {
+}
+
+// File: src/main/java/com/interview/platform/mod24_file_storage/FileStorageService.java
+package com.interview.platform.mod24_file_storage;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class FileStorageService {
+}
+
+// File: src/main/java/com/interview/platform/mod06_question_repository/QuestionCrudSearchController.java
+package com.interview.platform.mod06_question_repository;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/question-repository")
+public class QuestionCrudSearchController {
+}
+
+// File: src/main/java/com/interview/platform/mod06_question_repository/QuestionCrudSearchService.java
+package com.interview.platform.mod06_question_repository;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class QuestionCrudSearchService {
+}
+
+// File: src/main/java/com/interview/platform/mod15_scoring_engine/ScoringEngineController.java
+package com.interview.platform.mod15_scoring_engine;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/scoring-engine")
+public class ScoringEngineController {
+}
+
+// File: src/main/java/com/interview/platform/mod15_scoring_engine/ScoringEngineService.java
+package com.interview.platform.mod15_scoring_engine;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class ScoringEngineService {
+}
+
+// File: src/main/java/com/interview/platform/mod21_notifications/NotificationsController.java
+package com.interview.platform.mod21_notifications;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/notifications")
+public class NotificationsController {
+}
+
+// File: src/main/java/com/interview/platform/mod21_notifications/NotificationsService.java
+package com.interview.platform.mod21_notifications;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class NotificationsService {
+}
+
+// File: src/main/java/com/interview/platform/mod27_configuration_management/ConfigurationManagementController.java
+package com.interview.platform.mod27_configuration_management;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/configuration-management")
+public class ConfigurationManagementController {
+}
+
+// File: src/main/java/com/interview/platform/mod27_configuration_management/ConfigurationManagementService.java
+package com.interview.platform.mod27_configuration_management;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class ConfigurationManagementService {
+}
+
+// File: src/main/java/com/interview/platform/mod02_user_profile/CandidateProfileManagementController.java
+package com.interview.platform.mod02_user_profile;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/user-profile")
+public class CandidateProfileManagementController {
+}
+
+// File: src/main/java/com/interview/platform/mod02_user_profile/CandidateProfileManagementService.java
+package com.interview.platform.mod02_user_profile;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class CandidateProfileManagementService {
+}
+
+// File: src/main/java/com/interview/platform/mod05_experience_level_management/ExperienceLevelManagementController.java
+package com.interview.platform.mod05_experience_level_management;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1/experience-level-management")
+public class ExperienceLevelManagementController {
+}
+
+// File: src/main/java/com/interview/platform/mod05_experience_level_management/ExperienceLevelManagementService.java
+package com.interview.platform.mod05_experience_level_management;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class ExperienceLevelManagementService {
+}
+
