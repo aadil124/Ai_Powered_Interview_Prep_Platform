@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { useRetrieveAdminDashboard } from '../features/mod18_dashboard/hooks/queries/useRetrieveAdminDashboard';
 import { useGetPlatformMetrics } from '../features/mod20_analytics/hooks/queries/useGetPlatformMetrics';
 import toast from 'react-hot-toast';
@@ -12,8 +12,32 @@ import { BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContai
 import { useGetDashboardCharts } from '../features/mod18_dashboard/hooks/queries/useGetDashboardCharts';
 import { useGetRecentActivity } from '../features/mod18_dashboard/hooks/queries/useGetRecentActivity';
 
+// Import MOD-28 dashboard insights components
+import CandidatePerformanceCard from '../features/mod28_dashboard_insights/components/CandidatePerformanceCard';
+import MostImprovedWidget from '../features/mod28_dashboard_insights/components/MostImprovedWidget';
+import { useQueryClient } from '@tanstack/react-query';
+import { INSIGHTS_QUERY_KEYS } from '../features/mod28_dashboard_insights/insights.query-keys';
+
 export default function Admin_Dashboard() {
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
+  const queryClient = useQueryClient();
+  const lastRunRef = useRef<number>(0);
+
+  // Debounced/Throttled live updates: ignores requests within a 5-second window to prevent flooding
+  const handleSimulatedEvent = useCallback(() => {
+    const now = Date.now();
+    const lastRun = lastRunRef.current;
+    
+    if (now - lastRun >= 5000) {
+      lastRunRef.current = now;
+      // Invalidate queries under MOD-28 insights keys to fetch updated metrics
+      queryClient.invalidateQueries({ queryKey: INSIGHTS_QUERY_KEYS.all });
+      toast.success("AI Evaluation Completed: Throttled update broadcast successful.");
+    } else {
+      const remaining = Math.ceil((5000 - (now - lastRun)) / 1000);
+      toast.error(`Broadcast throttled. Wait ${remaining}s before triggering updates.`);
+    }
+  }, [queryClient]);
 
   const { data: dashboardData, isLoading: isDashboardLoading } = useRetrieveAdminDashboard(selectedDate);
   const { data: metricsData, isLoading: isMetricsLoading } = useGetPlatformMetrics(selectedDate);
@@ -60,6 +84,7 @@ export default function Admin_Dashboard() {
         <span className="material-symbols-outlined text-[20px] text-on-surface-variant ml-2">calendar_today</span>
         <input type="date" className="bg-transparent border-none outline-none font-label-md text-label-md text-on-surface cursor-pointer" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
       </div>
+      <Button variant="outline" icon="bolt" onClick={handleSimulatedEvent}>SIMULATE AI EVENT</Button>
       <Button icon="download" onClick={handleExportReport}>EXPORT REPORT</Button>
     </>
   }
@@ -154,6 +179,17 @@ export default function Admin_Dashboard() {
 </div>
 </Card>
 </div>
+
+{/* Row 2.5: Candidate Insights (MOD-28) */}
+<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+  <div className="lg:col-span-2">
+    <CandidatePerformanceCard />
+  </div>
+  <div className="lg:col-span-1">
+    <MostImprovedWidget />
+  </div>
+</div>
+
 {/* Row 3: Activity & Health */}
 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 {/* Recent Activity */}

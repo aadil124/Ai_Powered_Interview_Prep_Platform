@@ -56,7 +56,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         pd.setTitle("Unauthorized");
         pd.setInstance(URI.create(request.getDescription(false).replace("uri=", "")));
         pd.setProperty("timestamp", Instant.now().toString());
-
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(createResponse(pd));
     }
 
